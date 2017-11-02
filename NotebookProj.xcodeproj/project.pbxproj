@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		DA6DCAE71FAA78DC0059998E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6DCAE61FAA78DC0059998E /* AppDelegate.swift */; };
-		DA6DCAE91FAA78DC0059998E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6DCAE81FAA78DC0059998E /* ViewController.swift */; };
 		DA6DCAEC1FAA78DC0059998E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6DCAEA1FAA78DC0059998E /* Main.storyboard */; };
 		DA6DCAEF1FAA78DC0059998E /* NotebookProj.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA6DCAED1FAA78DC0059998E /* NotebookProj.xcdatamodeld */; };
 		DA6DCAF11FAA78DC0059998E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6DCAF01FAA78DC0059998E /* Assets.xcassets */; };
 		DA6DCAF41FAA78DC0059998E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6DCAF21FAA78DC0059998E /* LaunchScreen.storyboard */; };
 		DA6DCAFF1FAA78DC0059998E /* NotebookProjTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6DCAFE1FAA78DC0059998E /* NotebookProjTests.swift */; };
 		DA6DCB0A1FAA78DC0059998E /* NotebookProjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6DCB091FAA78DC0059998E /* NotebookProjUITests.swift */; };
+		DA6DCB181FAA83300059998E /* updateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6DCB171FAA83300059998E /* updateNoteViewController.swift */; };
+		DA6DCB1C1FAA8CFC0059998E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6DCB1B1FAA8CFC0059998E /* TableViewController.swift */; };
+		DA6DCB1E1FAA95600059998E /* addNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6DCB1D1FAA95600059998E /* addNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 /* Begin PBXFileReference section */
 		DA6DCAE31FAA78DC0059998E /* NotebookProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotebookProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6DCAE61FAA78DC0059998E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA6DCAE81FAA78DC0059998E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DA6DCAEB1FAA78DC0059998E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA6DCAEE1FAA78DC0059998E /* NotebookProj.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotebookProj.xcdatamodel; sourceTree = "<group>"; };
 		DA6DCAF01FAA78DC0059998E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		DA6DCB051FAA78DC0059998E /* NotebookProjUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotebookProjUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6DCB091FAA78DC0059998E /* NotebookProjUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookProjUITests.swift; sourceTree = "<group>"; };
 		DA6DCB0B1FAA78DC0059998E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA6DCB171FAA83300059998E /* updateNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = updateNoteViewController.swift; sourceTree = "<group>"; };
+		DA6DCB1B1FAA8CFC0059998E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		DA6DCB1D1FAA95600059998E /* addNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				DA6DCAE61FAA78DC0059998E /* AppDelegate.swift */,
-				DA6DCAE81FAA78DC0059998E /* ViewController.swift */,
+				DA6DCB171FAA83300059998E /* updateNoteViewController.swift */,
+				DA6DCB1D1FAA95600059998E /* addNoteViewController.swift */,
+				DA6DCB1B1FAA8CFC0059998E /* TableViewController.swift */,
 				DA6DCAEA1FAA78DC0059998E /* Main.storyboard */,
 				DA6DCAF01FAA78DC0059998E /* Assets.xcassets */,
 				DA6DCAF21FAA78DC0059998E /* LaunchScreen.storyboard */,
@@ -262,9 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA6DCAE91FAA78DC0059998E /* ViewController.swift in Sources */,
+				DA6DCB181FAA83300059998E /* updateNoteViewController.swift in Sources */,
 				DA6DCAE71FAA78DC0059998E /* AppDelegate.swift in Sources */,
+				DA6DCB1C1FAA8CFC0059998E /* TableViewController.swift in Sources */,
 				DA6DCAEF1FAA78DC0059998E /* NotebookProj.xcdatamodeld in Sources */,
+				DA6DCB1E1FAA95600059998E /* addNoteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +519,7 @@
 				DA6DCB101FAA78DC0059998E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA6DCB111FAA78DC0059998E /* Build configuration list for PBXNativeTarget "NotebookProjTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +528,7 @@
 				DA6DCB131FAA78DC0059998E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA6DCB141FAA78DC0059998E /* Build configuration list for PBXNativeTarget "NotebookProjUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +537,7 @@
 				DA6DCB161FAA78DC0059998E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
