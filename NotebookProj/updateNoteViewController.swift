@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  updateNoteViewController.swift
 //  NotebookProj
 //
 //  Created by Allison Marley on 11/1/17.
