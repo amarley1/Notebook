@@ -6,68 +6,106 @@
 //  Copyright © 2017 ASU. All rights reserved.
 //
 
+
 import UIKit
 
-class TableViewController: UITableViewController {
-
+class TableViewController: UITableViewController, UITextViewDelegate {
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var notes: [Note] = []
-
+    var selectedIndex: Int!
     
-    func fetchData() {
-        do {
-            notes = try context.fetch(Note.fetchRequest())
-            print(notes)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        } catch {
-            print("Couldn't Fetch Data")
-        }
+    var savedNote: [Note] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchData()
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    
+    
+    func fetchData() {
+        
+        do {
+            
+            notes = try context.fetch(Note.fetchRequest())
+            savedNote = notes
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+            
+        } catch {
+            print("Couldn't Fetch Data")
+        }
+        
     }
+        
+    
+    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return notes.count
-    }
-
-  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         
-        cell.textLabel?.text = notes[indexPath.row].name
-
-        // Configure the cell...
-
+        cell.textLabel?.text = savedNote[indexPath.row].name
+        
         return cell
     }
-  
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return savedNote.count
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedIndex = indexPath.row
+        
+        performSegue(withIdentifier: "UpdateVC", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            
+            let note = self.savedNote[indexPath.row]
+            self.context.delete(note)
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            self.savedNote.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+        
+        return [delete]
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     
+        if segue.identifier == "UpdateVC" {
+            let updateVC = segue.destination as! updateNoteViewController
+            updateVC.note = savedNote[selectedIndex!]
+            
+           
+        }
+    }
+    
+    
+}
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -104,14 +142,6 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
-}
+
